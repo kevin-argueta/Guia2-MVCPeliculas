@@ -1,11 +1,36 @@
-﻿namespace MVCPeliculas.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MVCPeliculas.Models
 {
     public class Pelicula
     {
         public int Id { get; set; }
+        
+        [StringLength(250)]
+        [Required]
         public string Titulo { get; set; }
+        
         public DateTime FechaLanzamiento { get; set; }
+        
+        [StringLength(15)]
+        [Required]
         public string Genero { get; set; }
+       
+        [Column(TypeName = "money")]
+        [Required]
         public decimal Precio { get; set; }
+        
+        [StringLength(15)]
+        [Required]
+        public string Director { get; set; }
+
+        [Required]
+        [ForeignKey("GeneroPelicula")]
+        public int GeneroId { get; set; } //llave foranea
+
+        public Genero GeneroPelicula { get; set; } //propiedad de navegacion
+
     }
+    
 }
