@@ -25,11 +25,6 @@
                 <span asp-validation-for="FechaLanzamiento" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Genero" class="control-label"></label>
-                <input asp-for="Genero" class="form-control" />
-                <span asp-validation-for="Genero" class="text-danger"></span>
-            </div>
 
             <div class="form-group">
                 <label asp-for="Precio" class="control-label"></label>
@@ -44,18 +39,14 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="GeneroId" class="control-label"></label>
-                <input asp-for="GeneroId" class="form-control" />
+                <label asp-for="Genero" class="control-label"></label>
+                <select asp-for="GeneroId" class="form-control" asp-items="ViewBag.GeneroId">
+                    <option value="">--Seleccione</option>
+                </select>
                 <span asp-validation-for="GeneroId" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <label asp-for="GeneroPelicula" class="control-label"></label>
-                <input asp-for="GeneroPelicula" class="form-control" />
-                <span asp-validation-for="GeneroPelicula" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" value="Guardar" class="btn btn-primary" />
             </div>
         </form>
     </div>

@@ -6,30 +6,33 @@ namespace MVCPeliculas.Models
     public class Pelicula
     {
         public int Id { get; set; }
-        
-        [StringLength(250)]
+
+        [StringLength(250, MinimumLength =3,ErrorMessage ="Debe escribir al menos 3 letras")]
         [Required]
+        [Display(Name = "Título")]
         public string Titulo { get; set; }
-        
+
+        [Display(Name = "Fecha de lanzamiento")]
+        [DataType(DataType.Date)]
         public DateTime FechaLanzamiento { get; set; }
         
-        [StringLength(15)]
-        [Required]
-        public string Genero { get; set; }
        
         [Column(TypeName = "money")]
         [Required]
+        [Range(1,100,ErrorMessage ="El precio debe estar entre 1 y 100")]
         public decimal Precio { get; set; }
         
         [StringLength(15)]
         [Required]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$", ErrorMessage = "El nombre del director debe comenzar con mayúscula y solo puede contener letras.")]
         public string Director { get; set; }
 
         [Required]
         [ForeignKey("GeneroPelicula")]
         public int GeneroId { get; set; } //llave foranea
 
-        public Genero GeneroPelicula { get; set; } //propiedad de navegacion
+        [Display(Name = "")]
+        public Genero Genero { get; set; } //propiedad de navegacion
 
     }
     
